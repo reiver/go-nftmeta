@@ -30,6 +30,9 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 		const name string =         "animation_url"
 		value, something := receiver.animationURL.Get()
 		if something {
+			if after {
+				p = append(p, ',')
+			}
 			after = true
 
 			var err error
@@ -48,7 +51,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -68,7 +70,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -88,7 +89,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -108,7 +108,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -128,7 +127,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -148,7 +146,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -168,7 +165,6 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 			if after {
 				p = append(p, ',')
 			}
-
 			after = true
 
 			var err error
@@ -182,6 +178,11 @@ func (receiver MetaData) MarshalJSON() ([]byte, error) {
 	}
 
 	if 0 < len(receiver.attributes) {
+		if after {
+			p = append(p, ',')
+		}
+		after = true
+
 		p = append(p , `"attributes":[`...)
 		for index, attribute := range receiver.attributes {
 			if 0 < index {

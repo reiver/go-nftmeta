@@ -195,6 +195,13 @@ func TestAttribute_MarshalJSON(t *testing.T) {
 			Attribute: nftmeta.TypedAttributeBigInt("TWO", big.NewInt(2), "boost_percentage"),
 			Expected: []byte(`{"display_type":"boost_percentage","trait_type":"TWO","value":2}`),
 		},
+
+
+
+		{
+			Attribute: nftmeta.AttributeString("maturity", "2024-06-20T18:03:14.636Z"),
+			Expected: []byte(`{"trait_type":"maturity","value":"2024-06-20T18:03:14.636Z"}`),
+		},
 	}
 
 	for testNumber, test := range tests {

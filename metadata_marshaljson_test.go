@@ -314,6 +314,22 @@ func TestMetaData_MarshalJSON(t *testing.T) {
 			}(),
 			Expected: []byte(`{"attributes":[{"trait_type":"Base","value":"Starfish"},{"trait_type":"Big","value":"Eyes"},{"trait_type":"Mouth","value":"Surprised"},{"trait_type":"Level","value":5},{"trait_type":"Stamina","value":1.4},{"trait_type":"Personality","value":"Sad"},{"display_type":"boost_number","trait_type":"Aqua Power","value":40},{"trait_type":"Shift","value":-3},{"trait_type":"Max","value":6277101735386680763835789423207666416102355444464034512895},{"display_type":"boost_number","trait_type":"Super Shift","value":1000000},{"display_type":"pie_style","trait_type":"Pie Color","value":"#FFFFED"},{"display_type":"ultimate_combo","trait_type":"Super Min","value":-9090909},{"display_type":"magic_number","trait_type":"Pie","value":3.141592653589793}]}`),
 		},
+
+
+
+		{
+			MetaData: func()nftmeta.MetaData{
+				var metadata nftmeta.MetaData
+
+				metadata.SetName("super-nft-0000001-holesky")
+				metadata.SetDescription("super-nft-token on holesky")
+
+				metadata.AppendAttribute(nftmeta.AttributeString("Maturity", "2024-06-20T18:03:14.636Z"))
+
+				return metadata
+			}(),
+			Expected: []byte(`{"description":"super-nft-token on holesky","name":"super-nft-0000001-holesky","attributes":[{"trait_type":"Maturity","value":"2024-06-20T18:03:14.636Z"}]}`),
+		},
 	}
 
 	for testNumber, test := range tests {
