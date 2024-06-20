@@ -10,6 +10,35 @@ Online documentation, which includes examples, can be found at: http://godoc.org
 
 [![GoDoc](https://godoc.org/github.com/reiver/go-nftmeta?status.svg)](https://godoc.org/github.com/reiver/go-nftmeta)
 
+## Example
+
+Here is an example:
+
+```golang
+import (
+	"encoding/json"
+
+	"github.com/reiver/go-nftmeta"
+)
+
+// ...
+
+var metadata nftmeta.MetaData
+
+metadata.SetExternalLink("http://example.com/token/123")
+metadata.SetName("peanut-butter-jelly-time")
+metadata.SetYouTubeURL("https://youtu.be/eRBOgtp0Hac")
+
+metadata.AppendAttribute(  nftmeta.AttributeString("Bread 1", "Peanut Butter")  )
+metadata.AppendAttribute(  nftmeta.AttributeString("Bread 2", "Jelly")  )
+
+// ...
+
+// 'writer' (below) could be http.ResponseWriter
+err := json.NewEncoder(writer).Encode(metadata)
+
+```
+
 ## Import
 
 To import package **nftmeta** use `import` code like the follownig:
